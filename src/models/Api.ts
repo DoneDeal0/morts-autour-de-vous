@@ -1,4 +1,5 @@
 import { AddressSuggestion } from "./Adress";
+import { SearchForm } from "./Search";
 
 export interface SearchApi {
   getGeoLocation: () => {
@@ -10,18 +11,8 @@ export interface SearchApi {
   searchAddress: (
     address: string
   ) => { addresses: AddressSuggestion[]; error: string; loading: boolean };
-  searchPeopleByName: (
-    name: string
-  ) => {
-    people: number;
-    error: string;
-    loading: boolean;
-  };
-  searchPeopleByGeolocation: (
-    maxDistance: number,
-    geolocation: [number, number],
-    page: number
-  ) => {
+  searchPeople: () => {
+    onSearch: (form: SearchForm) => Promise<any>;
     people: any;
     error: string;
     loading: boolean;

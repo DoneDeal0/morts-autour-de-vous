@@ -1,4 +1,5 @@
 import { Addresses } from "models/Adress";
+import { ITab, SearchForm } from "models/Search";
 
 export const formatAddresses = (addresses: Addresses) => {
   if (!addresses || addresses?.features?.length < 1) {
@@ -30,4 +31,15 @@ export const geoLocate = async (): Promise<{
       maximumAge: 10000,
     });
   });
+};
+
+export const formatSearchQuery = (form: SearchForm) => {
+  const { coordinates, distance, firstName, lastName } = form;
+  if (form.tab === "geo") {
+    const geoData = {
+      deathGeoPoint: `{"latitude": ${coordinates[1]}, "longitude": ${coordinates[0]}, "distance": "${distance}km"}`,
+    };
+    return new URLSearchParams(Object.entries(geoData)).toString();
+  }
+  return `firstName=${firstName}&lastName=${lastName})`;
 };
