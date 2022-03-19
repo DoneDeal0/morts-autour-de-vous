@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/",
+    "baseUrl": "./",
+    "paths": {
+      "api/*": ["src/api/*"],
+      "assets/*": ["src/assets/*"],
+      "components/*": ["src/components/*"],
+      "containers/*": ["src/containers/*"],
+      "models/*": ["src/models/*"],
+      "pages/*": ["src/pages/*"],
+      "router/*": ["src/router/*"],
+      "src/*": ["src/*"],
+      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
+    },
+    "skipLibCheck": true,
+    "noEmit": true,
+    "noImplicitAny": false,
+    "downlevelIteration": true,
+    "lib": ["es6", "es2019.array", "dom"],
+    "rootDir": "src",
+    "module": "esnext",
+    "target": "es5",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "allowJs": true
+  },
+  "include": ["./src/**/*", "./custom.d.ts"],
+  "exclude": ["node_modules"]
+}
