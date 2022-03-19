@@ -40,7 +40,7 @@ const Root = styled.button<{
   &:hover {
     background: ${({ variant }) => variants[variant].hover_bg};
     box-shadow: ${({ variant }) =>
-      variant === "secondary" && `0px 0px 8px 1px ${Color.red}`};
+      variant === "secondary" && `0px 0px 8px 1px ${Color.blue}`};
     > p {
       color: ${({ variant }) => variants[variant].hover_color};
     }

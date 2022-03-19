@@ -20,7 +20,7 @@ const Root = styled.div`
 `;
 
 const Tab = styled.button<{ selected: boolean }>`
-  color: ${({ selected }) => (selected ? Color.red_bright : Color.grey_dark)};
+  color: ${({ selected }) => (selected ? Color.blue : Color.grey_dark)};
   font-weight: 600;
   position: relative;
   cursor: pointer;
@@ -37,7 +37,7 @@ const Line = styled(motion.div)`
   width: 100%;
   height: 4px;
   border-radius: 4px;
-  background: ${Color.red_bright};
+  background: ${Color.blue};
   position: absolute;
   bottom: -6px;
 `;

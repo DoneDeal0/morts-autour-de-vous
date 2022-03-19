@@ -11,7 +11,7 @@ const locating = keyframes`
 export const Locator = styled.div`
   width: 20px;
   height: 20px;
-  background-color: ${Color.red};
+  background-color: ${Color.blue};
   border-radius: 50%;
   position: relative;
   &:before {
@@ -23,7 +23,7 @@ export const Locator = styled.div`
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 3px solid ${Color.red};
+    border: 3px solid ${Color.blue};
     z-index: 2;
     animation: ${locating} 3s ease-out infinite;
   }

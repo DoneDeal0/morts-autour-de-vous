@@ -2,18 +2,18 @@ import { Color } from "components/theme";
 
 export const variants = {
   primary: {
-    background: Color.red,
+    background: Color.blue,
     color: Color.white,
     border: "transparent",
-    hover_bg: Color.red_bright,
+    hover_bg: Color.blue_bright,
     hover_color: Color.white,
   },
   secondary: {
     background: Color.black,
-    color: Color.red,
-    border: Color.red,
+    color: Color.blue,
+    border: Color.blue,
     hover_bg: Color.black,
-    hover_color: Color.red_bright,
+    hover_color: Color.blue_bright,
   },
   tertiary: {
     background: "none",
@@ -24,9 +24,9 @@ export const variants = {
   },
   quarternary: {
     background: "none",
-    color: Color.red,
+    color: Color.blue,
     border: "transparent",
-    hover_bg: Color.red,
+    hover_bg: Color.blue,
     hover_color: Color.white,
   },
 };

@@ -23,7 +23,7 @@ export default function ErrorLayout() {
   return (
     <Root>
       <Title>Une erreur est survenue</Title>
-      <Button label="Retour" onClick={() => window.location.assign("/")} />
+      <Button label="Rafraichir" onClick={() => window.location.assign("/")} />
     </Root>
   );
 }
