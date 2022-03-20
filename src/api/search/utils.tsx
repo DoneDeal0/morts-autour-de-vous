@@ -1,14 +1,40 @@
 import { Addresses } from "models/Adress";
-import { ITab, SearchForm } from "models/Search";
+import { Coordinates, Point } from "models/Map";
+import { People, SearchForm } from "models/Search";
 
 export const formatAddresses = (addresses: Addresses) => {
   if (!addresses || addresses?.features?.length < 1) {
     return [];
   }
   return addresses.features.map((address) => ({
-    coordinates: address.geometry.coordinates,
+    coordinates: address.geometry.coordinates.reverse() as Coordinates,
     label: address.properties.label,
   }));
+};
+
+const genderWord = (word: string, gender: "M" | "F") => {
+  if (gender === "M") return word;
+  return `${word}e`;
+};
+
+export const formatPeople = (persons: People["persons"]): Point[] => {
+  if (!persons || persons?.length < 1) {
+    return [];
+  }
+  const formattedPersons = persons.map((person) => ({
+    lat: person.death.location?.latitude,
+    lng: person.death.location?.longitude,
+    name: `${person.name.first.join(" ")} ${person.name.last} (${
+      person.death.age
+    } ans)`,
+    birth: `${genderWord("Né", person.sex)} à ${
+      person.birth.location.city
+    } en ${Number(person.source) - person.death.age}`,
+    death: `${genderWord("Décédé", person.sex)} à ${
+      person.death.location.city
+    } en ${person.source}`,
+  }));
+  return formattedPersons.filter((person) => person.lat && person.lng);
 };
 
 export const geoLocate = async (): Promise<{

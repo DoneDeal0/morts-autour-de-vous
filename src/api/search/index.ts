@@ -2,8 +2,8 @@
 import { useMutation, useQuery } from "react-query";
 import { router } from "api/search/router";
 import { SearchApi } from "models/Api";
-import { formatAddresses, geoLocate } from "./utils";
-import { ITab, SearchForm } from "models/Search";
+import { formatAddresses, formatPeople, geoLocate } from "./utils";
+import { SearchForm } from "models/Search";
 
 export const searchAddress: SearchApi["searchAddress"] = (address: string) => {
   const { data, error, isLoading } = useQuery(["search-address", address], () =>
@@ -16,16 +16,18 @@ export const searchAddress: SearchApi["searchAddress"] = (address: string) => {
   };
 };
 
-export const searchPeople: SearchApi["searchPeople"] = () => {
-  const {
-    mutateAsync,
-    isLoading,
-    error,
-    data,
-  } = useMutation((form: SearchForm) => router.searchPeople(form));
+export const searchPeople: SearchApi["searchPeople"] = (
+  form: SearchForm,
+  allowSearch: boolean
+) => {
+  const { data, error, isLoading } = useQuery(
+    ["search", form],
+    () => router.searchPeople(form),
+    { enabled: allowSearch, cacheTime: 3600000, keepPreviousData: true } // keep cached pages data for one hour
+  );
   return {
-    people: data,
-    onSearch: (form: SearchForm) => mutateAsync(form),
+    people: formatPeople(data?.persons),
+    total: data?.total || 0,
     loading: isLoading,
     error: error ? error["message"] : "",
   };

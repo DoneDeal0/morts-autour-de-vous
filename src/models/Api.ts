@@ -1,4 +1,5 @@
 import { AddressSuggestion } from "./Adress";
+import { Point } from "./Map";
 import { SearchForm } from "./Search";
 
 export interface SearchApi {
@@ -11,9 +12,12 @@ export interface SearchApi {
   searchAddress: (
     address: string
   ) => { addresses: AddressSuggestion[]; error: string; loading: boolean };
-  searchPeople: () => {
-    onSearch: (form: SearchForm) => Promise<any>;
-    people: any;
+  searchPeople: (
+    form: SearchForm,
+    allowSearch: boolean
+  ) => {
+    total: number;
+    people: Point[];
     error: string;
     loading: boolean;
   };

@@ -7,11 +7,12 @@ interface IDataContainer {
   loading: boolean;
   error: string;
   children: React.ReactNode;
+  noResult: boolean;
 }
 
 const Root = styled.main`
   overflow: hidden;
-  height: 100vh;
+  height: 90vh;
   position: relative;
   width: 100%;
 `;
@@ -40,6 +41,7 @@ const Shadow = styled.div`
 export default function DataContainer({
   loading,
   error,
+  noResult,
   children,
 }: IDataContainer) {
   return (
@@ -53,6 +55,11 @@ export default function DataContainer({
       {error && (
         <Mask>
           <p style={{ fontWeight: 600 }}>{error}</p>
+        </Mask>
+      )}
+      {noResult && (
+        <Mask>
+          <p style={{ fontWeight: 600 }}>Pas de résultats</p>
         </Mask>
       )}
       {children}

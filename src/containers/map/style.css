@@ -1,10 +1,14 @@
 .leaflet-tile-loaded {
   filter: brightness(1) invert(1) grayscale(10);
 }
-.leaflet-container a {
-  color: #000000;
+.leaflet-control-attribution a {
+  color: white;
 }
-.leaflet-container .leaflet-control-attribution {
-  background: none;
-  background-color: #fff;
+.leaflet-control-attribution .leaflet-control-attribution {
+  background-color: #1b76d2;
+  color: white;
+}
+
+.leaflet-control-zoom-in .leaflet-control-zoom-out {
+  color: black;
 }
