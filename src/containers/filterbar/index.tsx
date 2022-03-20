@@ -71,15 +71,16 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
   };
 
   const onClickGeolocate = async () => {
-    if (activeSwitch) {
-      return setActiveSwitch(!activeSwitch);
-    }
-    setActiveSwitch(true);
-    await onGeolocate();
-    if (isGeoSuccess) {
+    try {
+      if (activeSwitch) {
+        return setActiveSwitch(!activeSwitch);
+      }
+      setActiveSwitch(true);
+      await onGeolocate();
       return onUpdateForm("coordinates", geoData);
+    } catch (err) {
+      return setActiveSwitch(false);
     }
-    return setActiveSwitch(false);
   };
 
   return (
@@ -131,13 +132,18 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                       checked={activeSwitch}
                       inputProps={{ "aria-label": "geolocation" }}
                     />
-                    <span style={{ fontSize: 14, color: Color.blue_half }}>
+                    <span
+                      style={{
+                        fontSize: 14,
+                        color: geoError ? Color.red : Color.blue_half,
+                      }}
+                    >
                       {isGeolocating
                         ? "chargement..."
                         : geoError
                         ? geoError
                         : isGeoSuccess
-                        ? "localisation enregistrée"
+                        ? "✓ localisation enregistrée"
                         : ""}
                     </span>
                   </SwitchWrapper>

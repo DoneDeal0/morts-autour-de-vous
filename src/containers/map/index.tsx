@@ -7,16 +7,22 @@ import "./style.css";
 import { Color } from "components/theme";
 import "overlapping-marker-spiderfier-leaflet/dist/oms";
 
-export const URL_MARKER_DEFAULT =
-  "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg";
-
-export const URL_MARKER_CURRENT =
-  "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg";
+declare global {
+  interface Window {
+    OverlappingMarkerSpiderfier: (map, options) => void;
+  }
+}
 
 type MapProps = {
   coordinates: Coordinates;
   points: Points;
 };
+
+export const URL_MARKER_DEFAULT =
+  "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg";
+
+export const URL_MARKER_CURRENT =
+  "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg";
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
