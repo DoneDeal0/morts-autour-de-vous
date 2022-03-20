@@ -15,7 +15,7 @@ interface IFilterbar {
 
 const Root = styled.div`
   background-color: ${Color.white};
-  width: 300px;
+  width: 450px;
   color: ${Color.black};
   height: 90vh;
 `;
@@ -100,9 +100,16 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                     renderInput={(params) => (
                       <TextField {...params} label="Adresse" />
                     )}
-                    onChange={(_, value) =>
-                      onUpdateForm("coordinates", value.coordinates)
-                    }
+                    value={address}
+                    onChange={(_, value) => {
+                      //@ts-ignore
+                      setAddress(value?.label);
+                      onUpdateForm(
+                        "coordinates",
+                        //@ts-ignore
+                        value?.coordinates?.reverse()
+                      );
+                    }}
                     onInputChange={(_, newAddress) => setAddress(newAddress)}
                   />
                 </Field>
@@ -121,6 +128,16 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                         ? geoError
                         : ""}
                     </span>
+                  </SwitchWrapper>
+                </Field>
+                <Field>
+                  <Label>Recherche stricte</Label>
+                  <SwitchWrapper style={{ marginLeft: -12 }}>
+                    <Switch
+                      onChange={() => onUpdateForm("fuzzy", !form.fuzzy)}
+                      checked={!form.fuzzy}
+                      inputProps={{ "aria-label": "geolocation" }}
+                    />
                   </SwitchWrapper>
                 </Field>
                 <Field>
@@ -155,6 +172,16 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                     onChange={(e) => onUpdateForm("lastName", e.target.value)}
                     value={form.lastName}
                   />
+                </Field>
+                <Field>
+                  <Label>Recherche stricte</Label>
+                  <SwitchWrapper style={{ marginLeft: -12 }}>
+                    <Switch
+                      onChange={() => onUpdateForm("fuzzy", !form.fuzzy)}
+                      checked={!form.fuzzy}
+                      inputProps={{ "aria-label": "geolocation" }}
+                    />
+                  </SwitchWrapper>
                 </Field>
               </div>
             )}

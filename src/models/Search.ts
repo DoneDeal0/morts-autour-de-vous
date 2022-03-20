@@ -6,6 +6,7 @@ export interface SearchForm {
   lastName: string;
   distance: number;
   coordinates: Coordinates;
+  fuzzy: boolean;
   page?: number;
   tab?: ITab;
 }

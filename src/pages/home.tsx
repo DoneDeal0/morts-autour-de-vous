@@ -12,6 +12,7 @@ export default function Home() {
     firstName: "",
     lastName: "",
     distance: 1,
+    fuzzy: true,
     page: 1,
     coordinates: [48.864716, 2.349014], // Paris
     tab: "geo",

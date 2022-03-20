@@ -25,7 +25,7 @@ const searchPeople = async (form: SearchForm): Promise<People> => {
   try {
     let query = formatSearchQuery(form);
     const res = await api.get(
-      `https://deces.matchid.io/deces/api/v1/search?${query}&page=${form.page}&fuzzy=false`
+      `https://deces.matchid.io/deces/api/v1/search?${query}&page=${form.page}&fuzzy=${form.fuzzy}`
     );
     if (res.status === 204) {
       throw new Error("Pas de résultats");
