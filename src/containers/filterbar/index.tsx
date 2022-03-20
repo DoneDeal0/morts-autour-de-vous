@@ -168,6 +168,16 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                     onChange={(_, v) => onUpdateForm("distance", v as number)}
                   />
                 </Field>
+                <Field>
+                  <Label>A partir de l'année ({form.fromYear})</Label>
+                  <Slider
+                    min={1970}
+                    max={+new Date().getFullYear()}
+                    aria-label="A partir de l'année"
+                    value={form.fromYear}
+                    onChange={(_, v) => onUpdateForm("fromYear", v as number)}
+                  />
+                </Field>
               </div>
             ) : (
               <div>
@@ -200,6 +210,16 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                       inputProps={{ "aria-label": "geolocation" }}
                     />
                   </SwitchWrapper>
+                </Field>
+                <Field>
+                  <Label>A partir de l'année ({form.fromYear})</Label>
+                  <Slider
+                    min={1970}
+                    max={+new Date().getFullYear()}
+                    aria-label="A partir de l'année"
+                    value={form.fromYear}
+                    onChange={(_, v) => onUpdateForm("fromYear", v as number)}
+                  />
                 </Field>
               </div>
             )}

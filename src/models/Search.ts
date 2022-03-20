@@ -7,6 +7,7 @@ export interface SearchForm {
   distance: number;
   coordinates: Coordinates;
   fuzzy: boolean;
+  fromYear: number;
   page?: number;
   tab?: ITab;
 }

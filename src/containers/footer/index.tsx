@@ -28,7 +28,7 @@ export default function Footer({ onClickPage, page, total }: IFooter) {
         Il est basé sur les données officielles du gouvernement Français et le
         projet open-source matchID. <br />
         Les résultats renvoyés par ce site n'ont aucune valeur officielle et
-        n'ont qu'une valeur informative
+        n'ont qu'une valeur informative.
       </p>
       {total > 0 && (
         <Pagination

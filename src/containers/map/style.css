@@ -2,11 +2,11 @@
   filter: brightness(1) invert(1) grayscale(10);
 }
 .leaflet-control-attribution a {
-  color: white;
+  color: black;
 }
 .leaflet-control-attribution .leaflet-control-attribution {
-  background-color: #1b76d2;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .leaflet-control-zoom-in .leaflet-control-zoom-out {

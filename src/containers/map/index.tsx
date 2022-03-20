@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
 import { Icon, Marker, Circle, LatLngBounds, Popup } from "leaflet";
 import useMap from "./useMap";
 import { Coordinates, Points } from "models/Map";
@@ -35,12 +35,25 @@ export default function Map({ coordinates, points }: MapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, coordinates);
 
+  useLayoutEffect(() => {
+    if (map && points.length > 0) {
+      const circle = new Circle(coordinates, {
+        color: Color.blue,
+        fillColor: Color.blue_half,
+        fillOpacity: 0.1,
+        radius: 5000, // in meters
+      });
+      circle.addTo(map);
+    }
+  }, [coordinates, map, points.length]);
+
   useEffect(() => {
-    if (map) {
-      const popup = new Popup({});
+    if (map && points.length > 0) {
+      const popup = new Popup();
       const oms = new window.OverlappingMarkerSpiderfier(map, {
+        keepSpiderfied: true,
         legWeight: 3,
-        legColors: Color.blue,
+        legColors: { usual: "transparent", highlighted: "transparent" },
       });
       const bounds = new LatLngBounds([]); // displays the relevant portion of the map
       points.forEach((point) => {
@@ -56,10 +69,10 @@ export default function Map({ coordinates, points }: MapProps) {
           .bindPopup(
             `<div style="margin-bottom: 6px;"><strong>${point.name}</strong></div><div>${point.birth}</div><div>${point.death}</div>`
           )
-          .on("mouseover", () => {
+          .on("mouseover", function () {
             this.openPopup();
           })
-          .on("mouseout", () => {
+          .on("mouseout", function () {
             this.closePopup();
           })
           .addTo(map);
@@ -67,19 +80,9 @@ export default function Map({ coordinates, points }: MapProps) {
         oms.addListener("click", (omsMarker) => {
           popup.setContent(omsMarker._popup._content);
           popup.setLatLng(omsMarker.getLatLng());
-          map.openPopup(popup);
         });
       });
-      if (points.length > 0) {
-        const circle = new Circle(coordinates, {
-          color: Color.blue,
-          fillColor: Color.blue_half,
-          fillOpacity: 0.1,
-          radius: 5000, // in meters
-        });
-        circle.addTo(map);
-        map.fitBounds(bounds);
-      }
+      map.fitBounds(bounds);
     }
   }, [map, points, coordinates]);
 
