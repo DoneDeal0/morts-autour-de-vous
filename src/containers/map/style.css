@@ -1,0 +1,10 @@
+.leaflet-tile-loaded {
+  filter: brightness(1) invert(1) grayscale(10);
+}
+.leaflet-container a {
+  color: #000000;
+}
+.leaflet-container .leaflet-control-attribution {
+  background: none;
+  background-color: #fff;
+}

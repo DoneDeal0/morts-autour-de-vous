@@ -28,11 +28,11 @@ const searchPeople = async (form: SearchForm): Promise<any> => {
       `https://deces.matchid.io/deces/api/v1/search?${query}`
     );
     if (res.status === 204) {
-      throw new Error("pas de résultats");
+      throw new Error("Pas de résultats");
     }
     return res.data;
   } catch (err) {
-    throw new Error("pas de résultats");
+    throw new Error("Pas de résultats");
   }
 };
 

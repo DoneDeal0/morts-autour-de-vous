@@ -67,7 +67,6 @@ module.exports = (env) => {
         models: path.resolve(__dirname, "src/models/"),
         pages: path.resolve(__dirname, "src/pages/"),
         src: path.resolve(__dirname, "src/"),
-        "@mui/styled-engine": "@mui/styled-engine-sc",
       },
     },
     module: {

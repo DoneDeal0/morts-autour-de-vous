@@ -24,7 +24,7 @@ export const geoLocate = async (): Promise<{
     };
     const handleSuccess = (position) => {
       resolve({
-        coordinates: [position.coords.longitude, position.coords.latitude],
+        coordinates: [position.coords.latitude, position.coords.longitude],
       });
     };
     geolocation.getCurrentPosition(handleSuccess, handleError, {
@@ -37,7 +37,7 @@ export const formatSearchQuery = (form: SearchForm) => {
   const { coordinates, distance, firstName, lastName } = form;
   if (form.tab === "geo") {
     const geoData = {
-      deathGeoPoint: `{"latitude": ${coordinates[1]}, "longitude": ${coordinates[0]}, "distance": "${distance}km"}`,
+      deathGeoPoint: `{"latitude": ${coordinates[0]}, "longitude": ${coordinates[1]}, "distance": "${distance}km"}`,
     };
     return new URLSearchParams(Object.entries(geoData)).toString();
   }
