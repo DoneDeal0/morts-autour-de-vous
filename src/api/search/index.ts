@@ -34,13 +34,20 @@ export const searchPeople: SearchApi["searchPeople"] = (
 };
 
 export const getGeoLocation: SearchApi["getGeoLocation"] = () => {
-  const { mutateAsync, isLoading, error, reset } = useMutation(() =>
-    geoLocate()
-  );
+  const {
+    mutateAsync,
+    isLoading,
+    error,
+    reset,
+    isSuccess,
+    data,
+  } = useMutation(() => geoLocate());
   return {
+    geoData: data?.coordinates,
     onGeolocate: () => mutateAsync(),
     isGeolocating: isLoading,
     geoError: error as string,
+    isGeoSuccess: isSuccess,
     geoReset: () => reset(),
   };
 };

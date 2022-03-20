@@ -1,13 +1,15 @@
 import { AddressSuggestion } from "./Adress";
-import { Point } from "./Map";
+import { Coordinates, Point } from "./Map";
 import { SearchForm } from "./Search";
 
 export interface SearchApi {
   getGeoLocation: () => {
-    onGeolocate: () => Promise<{ coordinates: [number, number] }>;
+    onGeolocate: () => Promise<{ coordinates: Coordinates }>;
     isGeolocating: boolean;
     geoError: string;
     geoReset: () => void;
+    isGeoSuccess: boolean;
+    geoData: Coordinates;
   };
   searchAddress: (
     address: string

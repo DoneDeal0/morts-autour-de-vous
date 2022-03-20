@@ -58,7 +58,13 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
   const [debouncedAddress] = useDebounce(address, 800);
   const { addresses, loading } = searchAddress(debouncedAddress);
   const [form, setForm] = useState<SearchForm>(currentForm);
-  const { onGeolocate, geoError, isGeolocating } = getGeoLocation();
+  const {
+    onGeolocate,
+    geoError,
+    isGeolocating,
+    isGeoSuccess,
+    geoData,
+  } = getGeoLocation();
 
   const onUpdateForm = (field: keyof SearchForm, value: any) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -66,10 +72,14 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
 
   const onClickGeolocate = async () => {
     if (activeSwitch) {
-      return setActiveSwitch(false);
+      return setActiveSwitch(!activeSwitch);
     }
-    const res = await onGeolocate();
-    onUpdateForm("coordinates", res?.coordinates);
+    setActiveSwitch(true);
+    await onGeolocate();
+    if (isGeoSuccess) {
+      return onUpdateForm("coordinates", geoData);
+    }
+    return setActiveSwitch(false);
   };
 
   return (
@@ -121,11 +131,13 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                       checked={activeSwitch}
                       inputProps={{ "aria-label": "geolocation" }}
                     />
-                    <span>
+                    <span style={{ fontSize: 14, color: Color.blue_half }}>
                       {isGeolocating
                         ? "chargement..."
                         : geoError
                         ? geoError
+                        : isGeoSuccess
+                        ? "localisation enregistrée"
                         : ""}
                     </span>
                   </SwitchWrapper>

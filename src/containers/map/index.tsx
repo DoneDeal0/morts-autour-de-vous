@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from "react";
-import { Icon, Marker, Circle, LatLngBounds } from "leaflet";
+import { Icon, Marker, Circle, LatLngBounds, Popup } from "leaflet";
 import useMap from "./useMap";
 import { Coordinates, Points } from "models/Map";
 import "leaflet/dist/leaflet.css";
 import "./style.css";
 import { Color } from "components/theme";
+import "overlapping-marker-spiderfier-leaflet/dist/oms";
 
 export const URL_MARKER_DEFAULT =
   "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg";
@@ -30,6 +31,11 @@ export default function Map({ coordinates, points }: MapProps) {
 
   useEffect(() => {
     if (map) {
+      const popup = new Popup({});
+      const oms = new window.OverlappingMarkerSpiderfier(map, {
+        legWeight: 3,
+        legColors: Color.blue,
+      });
       const bounds = new LatLngBounds([]); // displays the relevant portion of the map
       points.forEach((point) => {
         const marker = new Marker({
@@ -44,8 +50,19 @@ export default function Map({ coordinates, points }: MapProps) {
           .bindPopup(
             `<div style="margin-bottom: 6px;"><strong>${point.name}</strong></div><div>${point.birth}</div><div>${point.death}</div>`
           )
-          .openPopup()
+          .on("mouseover", () => {
+            this.openPopup();
+          })
+          .on("mouseout", () => {
+            this.closePopup();
+          })
           .addTo(map);
+        oms.addMarker(marker);
+        oms.addListener("click", (omsMarker) => {
+          popup.setContent(omsMarker._popup._content);
+          popup.setLatLng(omsMarker.getLatLng());
+          map.openPopup(popup);
+        });
       });
       if (points.length > 0) {
         const circle = new Circle(coordinates, {

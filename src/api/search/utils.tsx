@@ -38,7 +38,7 @@ export const formatPeople = (persons: People["persons"]): Point[] => {
 };
 
 export const geoLocate = async (): Promise<{
-  coordinates: [number, number];
+  coordinates: Coordinates;
 }> => {
   return new Promise((resolve, reject) => {
     const { geolocation } = navigator;
