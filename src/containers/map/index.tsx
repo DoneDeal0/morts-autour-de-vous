@@ -18,17 +18,14 @@ type MapProps = {
   points: Points;
 };
 
-export const URL_MARKER_DEFAULT =
+const URL_MARKER_DEFAULT =
   "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg";
-
-export const URL_MARKER_CURRENT =
-  "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg";
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
   iconSize: [20, 20],
-  iconAnchor: [20, 40],
-  popupAnchor: [-9, -30],
+  iconAnchor: [10, 20],
+  popupAnchor: [0, -30],
 });
 
 export default function Map({ coordinates, points }: MapProps) {
@@ -74,6 +71,9 @@ export default function Map({ coordinates, points }: MapProps) {
           })
           .on("mouseout", function () {
             this.closePopup();
+          })
+          .on("click", function () {
+            this.openPopup();
           })
           .addTo(map);
         oms.addMarker(marker);
