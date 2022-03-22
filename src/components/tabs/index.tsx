@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, AnimateSharedLayout } from "framer-motion";
 import styled from "styled-components";
-import Color from "components/theme/colors";
+import { Color, Font } from "components/theme";
 
 interface TabsProps {
   options: { id: string; label: string }[];
@@ -29,6 +29,7 @@ const Tab = styled.button<{ selected: boolean }>`
   background: transparent;
   text-transform: uppercase;
   border: 0;
+  font-family: ${Font.primary};
   &:focus {
     outline: none !important;
   }

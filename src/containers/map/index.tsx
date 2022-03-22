@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useLayoutEffect, useMemo } from "react";
 import { Icon, Marker, Circle, LatLngBounds } from "leaflet";
-import useMap from "./useMap";
-import { Coordinates, Points } from "models/Map";
-import "leaflet/dist/leaflet.css";
-import "./style.css";
-import { Color } from "components/theme";
-import "overlapping-marker-spiderfier-leaflet/dist/oms";
 import "leaflet.markercluster";
+import "leaflet/dist/leaflet.css";
+import "overlapping-marker-spiderfier-leaflet/dist/oms";
+import "./style.css";
+import { Coordinates, Points } from "models/Map";
+import { Color } from "components/theme";
+import useMap from "./useMap";
 
 declare global {
   interface Window {
@@ -17,6 +17,7 @@ declare global {
 type MapProps = {
   coordinates: Coordinates;
   points: Points;
+  showCircle: boolean;
 };
 
 const PIN =
@@ -29,12 +30,12 @@ const defaultCustomIcon = new Icon({
   popupAnchor: [0, -30],
 });
 
-export default function Map({ coordinates, points }: MapProps) {
+export default function Map({ coordinates, points, showCircle }: MapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, coordinates);
 
   useLayoutEffect(() => {
-    if (map && points.length > 0) {
+    if (map && showCircle && points.length > 0) {
       const circle = new Circle(coordinates, {
         color: Color.blue,
         fillColor: Color.blue_half,
@@ -43,7 +44,7 @@ export default function Map({ coordinates, points }: MapProps) {
       });
       circle.addTo(map);
     }
-  }, [coordinates, map, points.length]);
+  }, [coordinates, map, points.length, showCircle]);
 
   const markersCluster = useMemo(
     () =>

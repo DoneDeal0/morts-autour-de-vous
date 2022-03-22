@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Color } from "components/theme";
 import Loader from "components/loader";
+import { Color } from "components/theme";
 
 interface IDataContainer {
   loading: boolean;

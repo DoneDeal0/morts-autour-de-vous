@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Autocomplete, Slider, Switch, TextField } from "@mui/material";
 import { useDebounce } from "use-debounce";
 import { getGeoLocation, searchAddress } from "api/search";
+import { Color, Font } from "components/theme";
 import { SearchForm } from "models/Search";
-import { Color } from "components/theme";
 import { Field, Label, SwitchWrapper } from "./form";
 
 interface IGeoForm {
@@ -47,7 +47,7 @@ export default function GeoForm({ onUpdateForm, form }: IGeoForm) {
           autoComplete
           options={addresses.filter(({ label }) => label)}
           renderInput={(params) => <TextField {...params} label="Adresse" />}
-          value={address}
+          value={address || ""}
           onChange={(_, value) => {
             //@ts-ignore
             setAddress(value?.label);

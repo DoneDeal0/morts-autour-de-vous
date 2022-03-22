@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { Breakpoint, Color } from "components/theme";
 import { SearchForm } from "models/Search";
-import Tabs from "./tabs";
-import Header from "./header";
 import GeoForm from "./geo-form";
+import Header from "./header";
 import NameForm from "./name-form";
 import SearchButton from "./search-button";
+import Tabs from "./tabs";
+import isFormValid from "./utils";
 
 interface IFilterbar {
   currentForm: SearchForm;
@@ -64,7 +65,7 @@ const Panel = styled(motion.div)`
 export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
   const [form, setForm] = useState<SearchForm>(currentForm);
   const [openPanel, setOpenPanel] = useState(false);
-
+  const formValid = useMemo(() => isFormValid(form), [form]);
   const onUpdateForm = (field: keyof SearchForm, value: any) => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
@@ -85,7 +86,10 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
               )}
             </div>
             {/* INSERT GOOGLE ADS */}
-            <SearchButton onClick={() => onSearch(form)} />
+            <SearchButton
+              onClick={() => onSearch(form)}
+              disabled={!formValid}
+            />
           </Form>
         </FilterWrapper>
       </RootDesktop>
@@ -112,7 +116,10 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                   )}
                 </div>
                 {/* INSERT GOOGLE ADS */}
-                <SearchButton onClick={() => onSearch(form)} />
+                <SearchButton
+                  onClick={() => onSearch(form)}
+                  disabled={!formValid}
+                />
               </Form>
             </FilterWrapper>
           </Panel>

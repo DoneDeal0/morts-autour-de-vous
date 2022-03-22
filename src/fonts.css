@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "futura-bold";
+  src: url("./assets/fonts/futura-bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "futura-medium";
+  src: url("./assets/fonts/futura-medium.woff2") format("woff2");
+}
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  font-family: "sans-serif" !important;
+}

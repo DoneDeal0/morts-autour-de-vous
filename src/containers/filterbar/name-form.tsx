@@ -12,7 +12,7 @@ export default function NameForm({ form, onUpdateForm }) {
           id="prénom"
           label="Prénom de la personne décédée"
           onChange={(e) => onUpdateForm("firstName", e.target.value)}
-          value={form.firstName}
+          value={form.firstName || ""}
         />
       </Field>
       <Field>
@@ -22,7 +22,7 @@ export default function NameForm({ form, onUpdateForm }) {
           id="nom"
           label="Nom de la personne décédée"
           onChange={(e) => onUpdateForm("lastName", e.target.value)}
-          value={form.lastName}
+          value={form.lastName || ""}
         />
       </Field>
       <Field>

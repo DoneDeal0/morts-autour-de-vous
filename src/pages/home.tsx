@@ -1,41 +1,11 @@
 import React, { useState } from "react";
-import Filterbar from "containers/filterbar";
 import { searchPeople } from "api/search";
 import DataContainer from "containers/data";
+import Filterbar from "containers/filterbar";
 import Footer from "containers/footer";
 import Map from "containers/map";
 import { SearchForm } from "models/Search";
 
-const dummyPeople = [
-  {
-    name: "joe",
-    birth: "lala",
-    death: "lili",
-    lat: 48.864716,
-    lng: 2.349014,
-  },
-  {
-    name: "lili",
-    birth: "lala",
-    death: "lili",
-    lat: 48.864716,
-    lng: 2.349014,
-  },
-  {
-    name: "concon",
-    birth: "lala",
-    death: "lili",
-    lat: 48.864716,
-    lng: 2.349014,
-  },
-  {
-    name: "paul",
-    birth: "lala",
-    death: "lili",
-    lat: 48.874716,
-    lng: 2.399014,
-  },
-];
 export default function Home() {
   const [allowSearch, setAllowSearch] = useState(false);
   const [form, setForm] = useState<SearchForm>({
@@ -72,7 +42,11 @@ export default function Home() {
           error={error}
           noResult={total === 0 && !error && !loading && allowSearch}
         >
-          <Map points={people} coordinates={form.coordinates} />
+          <Map
+            points={people}
+            coordinates={form.coordinates}
+            showCircle={form.tab === "geo"}
+          />
         </DataContainer>
       </div>
       <Footer onClickPage={onClickPage} page={form.page} pages={pages} />

@@ -1,8 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { Pagination } from "@mui/material";
-import Color from "components/theme/colors";
-import { Breakpoint } from "components/theme";
+import styled from "styled-components";
+import { Color, Font } from "components/theme";
 
 interface IFooter {
   onClickPage: (page: number) => void;
@@ -17,23 +16,17 @@ const Root = styled.footer`
   border-top: 1px solid white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  @media (max-width: ${Breakpoint.tabletMax}) {
-    justify-content: center;
-  }
+  justify-content: center;
 `;
 
 const Text = styled.p<{ showPagination: boolean }>`
   padding: 12px;
   font-size: 10px;
-  max-width: 400px;
-  @media (max-width: ${Breakpoint.tabletMax}) {
-    text-align: center;
-    display: ${({ showPagination }) => showPagination && "none"};
-    > br {
-      display: none;
-    }
-  }
+  max-width: 800px;
+  text-align: center;
+  font-family: ${Font.sansSerif};
+  line-height: 16px;
+  display: ${({ showPagination }) => showPagination && "none"};
 `;
 
 export default function Footer({ onClickPage, page, pages }: IFooter) {
@@ -42,11 +35,10 @@ export default function Footer({ onClickPage, page, pages }: IFooter) {
     <Root>
       <Text showPagination={showPagination}>
         <strong>morts-autour-de-vous.fr</strong> est un annuaire de personnes
-        décédées en France depuis 1970. <br />
-        Il est basé sur les données officielles du gouvernement Français et le
-        projet open-source matchID. <br />
-        Les résultats renvoyés par ce site n'ont aucune valeur officielle et
-        n'ont qu'une valeur informative.
+        décédées en France depuis 1970. Il est basé sur les données officielles
+        du gouvernement Français et le projet open-source matchID. Les résultats
+        renvoyés par ce site n'ont aucune valeur officielle et n'ont qu'une
+        valeur informative.
       </Text>
       {showPagination && (
         <Pagination

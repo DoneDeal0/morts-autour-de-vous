@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Color } from "components/theme";
 import Icon from "components/icon";
+import { Color, Font } from "components/theme";
 
 interface IHeader {
   onClick?: () => void;
@@ -16,6 +16,7 @@ const Root = styled.header<{ isMobile: boolean }>`
 
 const Title = styled.h1`
   font-size: 36px;
+  font-family: ${Font.primary};
   margin: 0 0 0 12px;
 `;
 

@@ -1,7 +1,8 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
-import App from "./app";
 import { QueryClient, QueryClientProvider } from "react-query";
+import App from "./app";
+import "./fonts.css";
 
 const queryClient = new QueryClient({
   defaultOptions: {

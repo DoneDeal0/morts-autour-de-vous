@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "components/button";
+import { Button } from "@mui/material";
 import { Color } from "components/theme";
 
 const Root = styled.div`
@@ -23,7 +23,9 @@ export default function ErrorLayout() {
   return (
     <Root>
       <Title>Une erreur est survenue</Title>
-      <Button label="Rafraichir" onClick={() => window.location.assign("/")} />
+      <Button variant="contained" onClick={() => window.location.assign("/")}>
+        RAFRAÎCHIR
+      </Button>
     </Root>
   );
 }
