@@ -1,15 +1,16 @@
-import React, { useRef, useEffect, useLayoutEffect } from "react";
-import { Icon, Marker, Circle, LatLngBounds, Popup } from "leaflet";
+import React, { useRef, useEffect, useLayoutEffect, useMemo } from "react";
+import { Icon, Marker, Circle, LatLngBounds } from "leaflet";
 import useMap from "./useMap";
 import { Coordinates, Points } from "models/Map";
 import "leaflet/dist/leaflet.css";
 import "./style.css";
 import { Color } from "components/theme";
 import "overlapping-marker-spiderfier-leaflet/dist/oms";
+import "leaflet.markercluster";
 
 declare global {
   interface Window {
-    OverlappingMarkerSpiderfier: (map, options) => void;
+    L: any;
   }
 }
 
@@ -18,11 +19,11 @@ type MapProps = {
   points: Points;
 };
 
-const URL_MARKER_DEFAULT =
+const PIN =
   "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg";
 
 const defaultCustomIcon = new Icon({
-  iconUrl: URL_MARKER_DEFAULT,
+  iconUrl: PIN,
   iconSize: [20, 20],
   iconAnchor: [10, 20],
   popupAnchor: [0, -30],
@@ -44,15 +45,18 @@ export default function Map({ coordinates, points }: MapProps) {
     }
   }, [coordinates, map, points.length]);
 
+  const markersCluster = useMemo(
+    () =>
+      new window.L.MarkerClusterGroup({
+        chunkedLoading: true,
+      }),
+    []
+  );
+
   useEffect(() => {
     if (map && points.length > 0) {
-      const popup = new Popup();
-      const oms = new window.OverlappingMarkerSpiderfier(map, {
-        keepSpiderfied: true,
-        legWeight: 3,
-        legColors: { usual: "transparent", highlighted: "transparent" },
-      });
       const bounds = new LatLngBounds([]); // displays the relevant portion of the map
+      markersCluster.clearLayers();
       points.forEach((point) => {
         const marker = new Marker({
           lat: point.lat,
@@ -75,16 +79,12 @@ export default function Map({ coordinates, points }: MapProps) {
           .on("click", function () {
             this.openPopup();
           })
-          .addTo(map);
-        oms.addMarker(marker);
-        oms.addListener("click", (omsMarker) => {
-          popup.setContent(omsMarker._popup._content);
-          popup.setLatLng(omsMarker.getLatLng());
-        });
+          .addTo(markersCluster);
       });
       map.fitBounds(bounds);
+      markersCluster.addTo(map);
     }
-  }, [map, points, coordinates]);
+  }, [map, points, coordinates, markersCluster]);
 
   return <div style={{ height: "90vh" }} ref={mapRef} />;
 }

@@ -7,7 +7,7 @@ import { Breakpoint } from "components/theme";
 interface IFooter {
   onClickPage: (page: number) => void;
   page: number;
-  total: number;
+  pages: number;
 }
 
 const Root = styled.footer`
@@ -36,8 +36,8 @@ const Text = styled.p<{ showPagination: boolean }>`
   }
 `;
 
-export default function Footer({ onClickPage, page, total }: IFooter) {
-  const showPagination = total > 0;
+export default function Footer({ onClickPage, page, pages }: IFooter) {
+  const showPagination = pages > 0;
   return (
     <Root>
       <Text showPagination={showPagination}>
@@ -51,7 +51,7 @@ export default function Footer({ onClickPage, page, total }: IFooter) {
       {showPagination && (
         <Pagination
           sx={[{ "& .MuiPaginationItem-root": { color: Color.white } }]}
-          count={total}
+          count={pages}
           page={page}
           onChange={(_, value) => onClickPage(value)}
           color="primary"

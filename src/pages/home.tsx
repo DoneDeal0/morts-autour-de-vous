@@ -48,7 +48,10 @@ export default function Home() {
     coordinates: [48.864716, 2.349014], // Paris
     tab: "geo",
   });
-  const { loading, error, people, total } = searchPeople(form, allowSearch);
+  const { loading, error, people, pages, total } = searchPeople(
+    form,
+    allowSearch
+  );
 
   const onClickSearch = (newForm: SearchForm) => {
     setAllowSearch(true);
@@ -69,10 +72,10 @@ export default function Home() {
           error={error}
           noResult={total === 0 && !error && !loading && allowSearch}
         >
-          <Map points={dummyPeople} coordinates={form.coordinates} />
+          <Map points={people} coordinates={form.coordinates} />
         </DataContainer>
       </div>
-      <Footer onClickPage={onClickPage} page={form.page} total={total} />
+      <Footer onClickPage={onClickPage} page={form.page} pages={pages} />
     </div>
   );
 }

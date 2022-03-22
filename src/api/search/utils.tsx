@@ -69,3 +69,9 @@ export const formatSearchQuery = (form: SearchForm) => {
   }
   return `firstName=${firstName}&lastName=${lastName})`;
 };
+
+const MAX_RESULTS_PER_PAGE = 20;
+
+export const getPages = (total = 0) => {
+  return Math.floor(total / MAX_RESULTS_PER_PAGE);
+};

@@ -18,8 +18,9 @@ export interface SearchApi {
     form: SearchForm,
     allowSearch: boolean
   ) => {
-    total: number;
+    pages: number;
     people: Point[];
+    total: number;
     error: string;
     loading: boolean;
   };

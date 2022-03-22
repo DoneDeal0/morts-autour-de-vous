@@ -2,7 +2,7 @@
 import { useMutation, useQuery } from "react-query";
 import { router } from "api/search/router";
 import { SearchApi } from "models/Api";
-import { formatAddresses, formatPeople, geoLocate } from "./utils";
+import { formatAddresses, formatPeople, geoLocate, getPages } from "./utils";
 import { SearchForm } from "models/Search";
 
 export const searchAddress: SearchApi["searchAddress"] = (address: string) => {
@@ -27,6 +27,7 @@ export const searchPeople: SearchApi["searchPeople"] = (
   );
   return {
     people: formatPeople(data?.persons),
+    pages: getPages(data?.total),
     total: data?.total || 0,
     loading: isLoading,
     error: error ? error["message"] : "",
