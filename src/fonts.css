@@ -1,9 +1,4 @@
 @font-face {
-  font-family: "futura-bold";
-  src: url("./assets/fonts/futura-bold.woff2") format("woff2");
-}
-
-@font-face {
   font-family: "futura-medium";
   src: url("./assets/fonts/futura-medium.woff2") format("woff2");
 }

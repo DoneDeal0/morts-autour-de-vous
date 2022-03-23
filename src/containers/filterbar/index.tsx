@@ -17,7 +17,7 @@ interface IFilterbar {
 
 const RootDesktop = styled.div`
   background-color: ${Color.white};
-  width: 450px;
+  width: 330px;
   color: ${Color.black};
   height: 90vh;
   @media (max-width: ${Breakpoint.tabletMax}) {
@@ -42,6 +42,7 @@ const RootMobile = styled.div`
 
 const FilterWrapper = styled.div`
   padding: 24px;
+  height: calc(100% - 24px);
 `;
 
 const Form = styled.form`
@@ -49,9 +50,6 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: space-between;
   height: 69vh;
-  @media (min-width: ${Breakpoint.tabletMax}) {
-    height: 100%;
-  }
 `;
 
 const Panel = styled(motion.div)`

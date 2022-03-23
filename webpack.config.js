@@ -2,7 +2,6 @@
 const path = require("path");
 const zlib = require("zlib");
 const TerserPlugin = require("terser-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
@@ -12,9 +11,6 @@ const getPlugins = (isProduction) => {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       favicon: path.join(__dirname, "./src/assets/images/favicon.png"),
-    }),
-    new Dotenv({
-      systemvars: true,
     }),
   ];
   if (isProduction) {
