@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Icons, AllIcons } from "models/Icon";
+import { Icons, AllIcons } from "../../models/Icon";
 
 interface IconProps {
   icon: Icons;

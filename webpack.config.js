@@ -71,7 +71,7 @@ module.exports = (env) => {
           test: /\.(ts|js)x?$/,
           exclude: /node_modules/,
 
-          use: { loader: "babel-loader" },
+          use: { loader: "swc-loader" },
         },
         { test: /\.css$/, use: ["style-loader", "css-loader"] },
         { test: /\.(png|jpg|jpeg|woff2)$/, use: ["file-loader"] },
