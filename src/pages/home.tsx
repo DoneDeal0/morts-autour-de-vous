@@ -38,7 +38,7 @@ export default function Home() {
       <div style={{ display: "flex" }}>
         <Filterbar currentForm={form} onSearch={onClickSearch} />
         <DataContainer
-          loading={loading}
+          loading={true}
           error={error}
           noResult={total === 0 && !error && !loading && allowSearch}
         >

@@ -93,7 +93,11 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
       </RootDesktop>
       {/* MOBILE */}
       <RootMobile>
-        <Header onClick={() => setOpenPanel(!openPanel)} isMobile />
+        <Header
+          openPanel={openPanel}
+          onClick={() => setOpenPanel(!openPanel)}
+          isMobile
+        />
       </RootMobile>
       <AnimatePresence>
         {openPanel && (

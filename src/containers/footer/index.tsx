@@ -36,9 +36,25 @@ export default function Footer({ onClickPage, page, pages }: IFooter) {
       <Text showPagination={showPagination}>
         <strong>morts-autour-de-vous.fr</strong> est un annuaire de personnes
         décédées en France depuis 1970. Il est basé sur les données officielles
-        du gouvernement Français et le projet open-source matchID. Les résultats
-        renvoyés par ce site n'ont aucune valeur officielle et n'ont qu'une
-        valeur informative.
+        du gouvernement Français et le projet open-source{" "}
+        <a
+          style={{ color: Color.white }}
+          href="https://matchid.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          MatchID
+        </a>
+        . Les résultats renvoyés par ce site n'ont aucune valeur officielle et
+        n'ont qu'une valeur informative. Crée par{" "}
+        <a
+          style={{ color: Color.white }}
+          href="https://www.github.com/donedeal0"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          DoneDeal0
+        </a>
       </Text>
       {showPagination && (
         <Pagination
