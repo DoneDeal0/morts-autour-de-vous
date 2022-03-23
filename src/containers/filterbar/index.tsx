@@ -68,6 +68,11 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
+  const onClickMobileSearch = () => {
+    setOpenPanel(false);
+    onSearch(form);
+  };
+
   return (
     <div>
       {/* DESKTOP */}
@@ -119,7 +124,7 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                 </div>
                 {/* INSERT GOOGLE ADS */}
                 <SearchButton
-                  onClick={() => onSearch(form)}
+                  onClick={onClickMobileSearch}
                   disabled={!formValid}
                 />
               </Form>

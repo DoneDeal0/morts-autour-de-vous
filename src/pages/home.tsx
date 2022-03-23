@@ -11,7 +11,7 @@ export default function Home() {
   const [form, setForm] = useState<SearchForm>({
     firstName: "",
     lastName: "",
-    distance: 1,
+    distance: 3,
     fuzzy: true,
     fromYear: 2021,
     page: 1,
@@ -38,7 +38,7 @@ export default function Home() {
       <div style={{ display: "flex" }}>
         <Filterbar currentForm={form} onSearch={onClickSearch} />
         <DataContainer
-          loading={true}
+          loading={loading}
           error={error}
           noResult={total === 0 && !error && !loading && allowSearch}
         >

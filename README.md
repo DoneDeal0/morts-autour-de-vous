@@ -4,7 +4,7 @@ Application de recherche de personnes décédées en France depuis 1970. Cet ann
 les données officielles du gouvernement Français et le projet open-source MatchID. Les résultats
 renvoyés par ce site n'ont aucune valeur officielle et n'ont qu'une valeur informative.
 
-<a htref="https://recherche-personnes-decedees.netlify.app" target="_blanck">ouvrir</a>
+<a href="https://recherche-personnes-decedees.netlify.app" target="_blank">ouvrir</a>
 
 <br>
 
@@ -19,5 +19,5 @@ renvoyés par ce site n'ont aucune valeur officielle et n'ont qu'une valeur info
 
 ## CREDITS
 
-DoneDeal0
+DoneDeal0<br/>
 MatchID
