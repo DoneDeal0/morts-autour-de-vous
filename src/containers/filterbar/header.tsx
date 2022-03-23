@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Icon from "components/icon";
 import { Color, Font } from "components/theme";
-
+import Filters from "assets/svg/filters.svg";
 interface IHeader {
   onClick?: () => void;
   isMobile?: boolean;
@@ -30,7 +29,7 @@ export default function Header({ onClick, isMobile }: IHeader) {
   return (
     <Root isMobile={isMobile}>
       <Button onClick={onClick}>
-        <Icon icon="filters" color={Color.blue} />
+        <Filters color={Color.blue} width={32} height={32} />
       </Button>
       <Title>FILTRES</Title>
     </Root>
