@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useLayoutEffect, useMemo } from "react";
-import { Icon, Marker, Circle, LatLngBounds, circle } from "leaflet";
+import { Icon, Marker, Circle, LatLngBounds } from "leaflet";
 import "leaflet.markercluster";
 import "leaflet/dist/leaflet.css";
 import "overlapping-marker-spiderfier-leaflet/dist/oms";
@@ -61,7 +61,7 @@ export default function Map({ coordinates, points, showCircle }: MapProps) {
         circleArea.removeFrom(map);
       }
     }
-  }, [coordinates, map, points.length, showCircle]);
+  }, [coordinates, map, points.length, showCircle, circleArea]);
 
   useEffect(() => {
     if (map && points.length > 0) {

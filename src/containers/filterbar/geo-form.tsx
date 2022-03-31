@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Autocomplete, Slider, Switch, TextField } from "@mui/material";
 import { useDebounce } from "use-debounce";
 import { getGeoLocation, searchAddress } from "api/search";
-import { Color, Font } from "components/theme";
+import { Color } from "components/theme";
 import { SearchForm } from "models/Search";
 import { Field, Label, SwitchWrapper } from "./form";
 

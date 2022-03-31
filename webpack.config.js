@@ -76,16 +76,9 @@ module.exports = (env) => {
         { test: /\.css$/, use: ["style-loader", "css-loader"] },
         { test: /\.(png|jpg|jpeg|woff2)$/, use: ["file-loader"] },
         {
-          test: /\.svg$/,
-          use: [
-            { loader: "babel-loader" },
-            {
-              loader: "react-svg-loader",
-              options: {
-                jsx: true,
-              },
-            },
-          ],
+          test: /\.svg$/i,
+          issuer: /\.[jt]sx?$/,
+          use: ["@svgr/webpack"],
         },
       ],
     },

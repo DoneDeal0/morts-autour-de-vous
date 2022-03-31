@@ -3,7 +3,7 @@ import { Addresses } from "models/Adress";
 import { People, SearchForm } from "models/Search";
 import { formatSearchQuery } from "./utils";
 
-const searchAddress = async (address: string = ""): Promise<Addresses> => {
+const searchAddress = async (address = ""): Promise<Addresses> => {
   try {
     if (address.length < 3) {
       return null;
@@ -23,7 +23,7 @@ const searchAddress = async (address: string = ""): Promise<Addresses> => {
 
 const searchPeople = async (form: SearchForm): Promise<People> => {
   try {
-    let query = formatSearchQuery(form);
+    const query = formatSearchQuery(form);
     const res = await api.get(
       `https://deces.matchid.io/deces/api/v1/search?${query}&page=${form.page}&fuzzy=${form.fuzzy}&lastSeenAliveDate=${form.fromYear}`
     );
