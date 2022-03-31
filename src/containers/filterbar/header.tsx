@@ -24,7 +24,6 @@ const Title = styled.h1`
 const Button = styled.button<{ isMobile: boolean }>`
   background: transparent;
   border: 0;
-  width: 44px;
   display: flex;
   align-items: center;
   cursor: ${({ isMobile }) => (isMobile ? "pointer" : "default")};
@@ -34,14 +33,16 @@ const Button = styled.button<{ isMobile: boolean }>`
 export default function Header({ onClick, isMobile, openPanel }: IHeader) {
   return (
     <Root isMobile={isMobile}>
-      <Button onClick={onClick} isMobile={isMobile}>
-        {openPanel ? (
-          <Cross color={Color.blue} width={24} height={24} />
-        ) : (
-          <Filters color={Color.blue} width={32} height={32} />
-        )}
+      <Button onClick={onClick} isMobile={isMobile} aria-label="filtres">
+        <div style={{ width: 44 }}>
+          {openPanel ? (
+            <Cross color={Color.blue} width={24} height={24} />
+          ) : (
+            <Filters color={Color.blue} width={32} height={32} />
+          )}
+        </div>
+        <Title>FILTRES</Title>
       </Button>
-      <Title>FILTRES</Title>
     </Root>
   );
 }

@@ -37,6 +37,7 @@ const Shadow = styled.div`
   width: 100%;
   box-shadow: inset 0 0 70px #000000;
   pointer-events: none;
+  background: #2e2828;
 `;
 export default function DataContainer({
   loading,

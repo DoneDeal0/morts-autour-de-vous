@@ -107,3 +107,5 @@ module.exports = (env) => {
     },
   };
 };
+
+process.on("SIGINT", () => process.exit(0));

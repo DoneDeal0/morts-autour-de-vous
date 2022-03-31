@@ -27,7 +27,6 @@ const RootDesktop = styled.div`
 
 const RootMobile = styled.div`
   background-color: ${Color.white};
-  width: 100vw;
   color: ${Color.black};
   padding: 24px;
   position: absolute;
