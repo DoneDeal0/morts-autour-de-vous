@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useLayoutEffect, useMemo } from "react";
 import { Icon, Marker, Circle, LatLngBounds } from "leaflet";
 import "leaflet.markercluster";
 import "leaflet/dist/leaflet.css";
-import "overlapping-marker-spiderfier-leaflet/dist/oms";
 import "./style.css";
 import { Coordinates, Points } from "models/Map";
 import { Color } from "components/theme";

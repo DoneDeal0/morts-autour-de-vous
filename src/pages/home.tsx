@@ -45,7 +45,7 @@ export default function Home() {
           <Map
             points={people}
             coordinates={form.coordinates}
-            showCircle={form.tab === "geo"}
+            showCircle={form.tab === "geo" && !loading}
           />
         </DataContainer>
       </div>

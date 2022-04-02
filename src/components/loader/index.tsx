@@ -1,5 +1,6 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
 import { Color } from "components/theme";
 
 const spin3D = keyframes`

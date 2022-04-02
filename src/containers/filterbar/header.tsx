@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Color, Font } from "components/theme";
 import Cross from "assets/svg/cross.svg";
 import Filters from "assets/svg/filters.svg";

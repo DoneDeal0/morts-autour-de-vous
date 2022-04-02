@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Font } from "components/theme";
 
 export const Field = styled.section`

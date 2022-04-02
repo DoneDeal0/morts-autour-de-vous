@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimateSharedLayout } from "framer-motion";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Color, Font } from "components/theme";
 
 interface TabsProps {
@@ -14,7 +14,7 @@ const Root = styled.div`
   align-items: center;
   margin-bottom: 24px;
   transform: translateZ(0);
-  > button:nth-child(even) {
+  > button:nth-of-type(even) {
     margin: 0 12px;
   }
 `;

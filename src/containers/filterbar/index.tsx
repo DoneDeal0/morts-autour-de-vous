@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Breakpoint, Color } from "components/theme";
 import { SearchForm } from "models/Search";
 import GeoForm from "./geo-form";
