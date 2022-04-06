@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useLayoutEffect, useMemo } from "react";
+import React, { useRef, useEffect, useMemo } from "react";
 import { Icon, Marker, Circle, LatLngBounds } from "leaflet";
 import "leaflet.markercluster";
 import "leaflet/dist/leaflet.css";
@@ -31,18 +31,7 @@ const defaultCustomIcon = new Icon({
 
 export default function Map({ coordinates, points, showCircle }: MapProps) {
   const mapRef = useRef(null);
-  const map = useMap(mapRef, coordinates);
-
-  const circleArea = useMemo(
-    () =>
-      new Circle(coordinates, {
-        color: Color.blue,
-        fillColor: Color.blue_half,
-        fillOpacity: 0.1,
-        radius: 5000, // in meters
-      }),
-    [coordinates]
-  );
+  const map = useMap(mapRef, coordinates, showCircle);
 
   const markersCluster = useMemo(
     () =>
@@ -51,16 +40,6 @@ export default function Map({ coordinates, points, showCircle }: MapProps) {
       }),
     []
   );
-
-  useLayoutEffect(() => {
-    if (map) {
-      if (showCircle && points.length > 0) {
-        circleArea.addTo(map);
-      } else {
-        circleArea.removeFrom(map);
-      }
-    }
-  }, [coordinates, map, points.length, showCircle, circleArea]);
 
   useEffect(() => {
     if (map && points.length > 0) {
