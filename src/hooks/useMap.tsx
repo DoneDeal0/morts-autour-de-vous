@@ -32,13 +32,11 @@ export default function useMap(
 
   useLayoutEffect(() => {
     if (map) {
+      map.removeLayer(circleArea);
       if (showCircle) {
-        map.removeLayer(circleArea);
         circleArea.setLatLng(coordinates);
         circleArea.setRadius(searchRadius * 1000);
         map.addLayer(circleArea);
-      } else {
-        map.removeLayer(circleArea);
       }
     }
   }, [map, showCircle, circleArea, coordinates, searchRadius]);
