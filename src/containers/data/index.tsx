@@ -39,6 +39,7 @@ const Shadow = styled.div`
   pointer-events: none;
   background: #2e2828;
 `;
+
 export default function DataContainer({
   loading,
   error,

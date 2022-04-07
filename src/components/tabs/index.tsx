@@ -20,7 +20,7 @@ const Root = styled.div`
 `;
 
 const Tab = styled.button<{ selected: boolean }>`
-  color: ${({ selected }) => (selected ? Color.blue : Color.grey_dark)};
+  color: ${({ selected }) => (selected ? Color.blue : Color.grey)};
   font-weight: 600;
   position: relative;
   cursor: pointer;

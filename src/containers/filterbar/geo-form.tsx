@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Autocomplete, Slider, Switch, TextField } from "@mui/material";
 import { useDebounce } from "use-debounce";
-import { getGeoLocation, searchAddress } from "api/search";
-import { Color } from "components/theme";
+import { searchAddress } from "api/search";
 import { SearchForm } from "models/Search";
 import { Field, Label, SwitchWrapper } from "./form";
+import useGeoForm from "./useGeoForm";
 
 interface IGeoForm {
   form: SearchForm;
@@ -13,30 +13,9 @@ interface IGeoForm {
 
 export default function GeoForm({ onUpdateForm, form }: IGeoForm) {
   const [address, setAddress] = useState("");
-  const [activeSwitch, setActiveSwitch] = useState(false);
   const [debouncedAddress] = useDebounce(address, 800);
   const { addresses, loading } = searchAddress(debouncedAddress);
-
-  const {
-    onGeolocate,
-    geoError,
-    isGeolocating,
-    isGeoSuccess,
-    geoData,
-  } = getGeoLocation();
-
-  const onClickGeolocate = async () => {
-    try {
-      if (activeSwitch) {
-        return setActiveSwitch(!activeSwitch);
-      }
-      setActiveSwitch(true);
-      await onGeolocate();
-      return onUpdateForm("coordinates", geoData);
-    } catch (err) {
-      return setActiveSwitch(false);
-    }
-  };
+  const { geoFeedback, onClickGeolocate } = useGeoForm(onUpdateForm);
 
   return (
     <div>
@@ -65,22 +44,11 @@ export default function GeoForm({ onUpdateForm, form }: IGeoForm) {
         <SwitchWrapper style={{ marginLeft: -12 }}>
           <Switch
             onChange={onClickGeolocate}
-            checked={activeSwitch}
+            checked={geoFeedback.active}
             inputProps={{ "aria-label": "geolocation" }}
           />
-          <span
-            style={{
-              fontSize: 14,
-              color: geoError ? Color.red : Color.blue_half,
-            }}
-          >
-            {isGeolocating
-              ? "chargement..."
-              : geoError
-              ? geoError
-              : isGeoSuccess
-              ? "✓ localisation enregistrée"
-              : ""}
+          <span style={{ fontSize: 14, color: geoFeedback.color }}>
+            {geoFeedback.legend}
           </span>
         </SwitchWrapper>
       </Field>

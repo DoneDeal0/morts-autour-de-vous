@@ -87,7 +87,6 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                 <NameForm onUpdateForm={onUpdateForm} form={form} />
               )}
             </div>
-            {/* INSERT GOOGLE ADS */}
             <SearchButton
               onClick={() => onSearch(form)}
               disabled={!formValid}
@@ -121,7 +120,6 @@ export default function Filterbar({ currentForm, onSearch }: IFilterbar) {
                     <NameForm onUpdateForm={onUpdateForm} form={form} />
                   )}
                 </div>
-                {/* INSERT GOOGLE ADS */}
                 <SearchButton
                   onClick={onClickMobileSearch}
                   disabled={!formValid}

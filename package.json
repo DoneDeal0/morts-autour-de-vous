@@ -10,12 +10,12 @@
     "lint": "eslint . --ext .js,.ts,.tsx"
   },
   "dependencies": {
-    "@emotion/react": "^11.8.2",
+    "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@mui/material": "^5.5.3",
-    "@mui/styled-engine": "^5.5.2",
+    "@mui/material": "^5.6.0",
+    "@mui/styled-engine": "^5.6.0",
     "axios": "^0.26.1",
-    "framer-motion": "6.2.8",
+    "framer-motion": "6.2.9",
     "leaflet": "^1.7.1",
     "leaflet.markercluster": "^1.5.3",
     "react": "^18.0.0",
@@ -26,20 +26,20 @@
   "devDependencies": {
     "@svgr/webpack": "^6.2.1",
     "@swc/cli": "^0.1.57",
-    "@swc/core": "^1.2.162",
+    "@swc/core": "^1.2.164",
     "@types/leaflet": "^1.7.9",
     "@types/leaflet.markercluster": "^1.4.6",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.9",
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@typescript-eslint/parser": "^5.17.0",
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.18.0",
     "compression-webpack-plugin": "^9.0.0",
     "css-loader": "^6.3.0",
     "css-minimizer-webpack-plugin": "^3.1.1",
     "eslint": "^8.12.0",
     "eslint-config-react-app": "^7.0.0",
     "eslint-plugin-flowtype": "^8.0.3",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.1.3",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.26.1",
@@ -54,6 +54,6 @@
     "typescript": "^4.6.3",
     "webpack": "^5.71.0",
     "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.3.1"
+    "webpack-dev-server": "^4.8.1"
   }
 }
