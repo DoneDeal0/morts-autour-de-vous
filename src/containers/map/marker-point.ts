@@ -1,4 +1,5 @@
 import { Icon, LayerGroup, Marker, MarkerCluster } from "leaflet";
+import { DATA } from "assets/data";
 import { Point } from "models/Map";
 
 declare global {
@@ -7,11 +8,8 @@ declare global {
   }
 }
 
-const PIN =
-  "https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg";
-
 const defaultCustomIcon = new Icon({
-  iconUrl: PIN,
+  iconUrl: DATA.pin,
   iconSize: [20, 20],
   iconAnchor: [10, 20],
   popupAnchor: [0, -30],

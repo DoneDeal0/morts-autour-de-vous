@@ -27,7 +27,7 @@ export default function NameForm({ form, onUpdateForm }) {
       </Field>
       <Field>
         <Label>Recherche stricte</Label>
-        <SwitchWrapper style={{ marginLeft: -12 }}>
+        <SwitchWrapper>
           <Switch
             onChange={() => onUpdateForm("fuzzy", !form.fuzzy)}
             checked={!form.fuzzy}

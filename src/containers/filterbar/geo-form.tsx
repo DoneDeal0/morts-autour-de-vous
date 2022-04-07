@@ -43,7 +43,7 @@ export default function GeoForm({ onUpdateForm, form }: IGeoForm) {
       </Field>
       <Field>
         <Label>Me géolocaliser</Label>
-        <SwitchWrapper style={{ marginLeft: -12 }}>
+        <SwitchWrapper>
           <Switch
             onChange={onClickGeolocate}
             checked={geoFeedback.active}
@@ -56,7 +56,7 @@ export default function GeoForm({ onUpdateForm, form }: IGeoForm) {
       </Field>
       <Field>
         <Label>Recherche stricte</Label>
-        <SwitchWrapper style={{ marginLeft: -12 }}>
+        <SwitchWrapper>
           <Switch
             onChange={() => onUpdateForm("fuzzy", !form.fuzzy)}
             checked={!form.fuzzy}
