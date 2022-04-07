@@ -3,8 +3,8 @@ import { LatLngBounds } from "leaflet";
 import "leaflet.markercluster";
 import "leaflet/dist/leaflet.css";
 import "./style.css";
+import useMap from "hooks/useMap";
 import { Coordinates, Points } from "models/Map";
-import useMap from "./useMap";
 import MarkerPoint from "./marker-point";
 
 declare global {

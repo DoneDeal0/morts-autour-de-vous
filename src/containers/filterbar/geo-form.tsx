@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Autocomplete, Slider, Switch, TextField } from "@mui/material";
 import { useDebounce } from "use-debounce";
 import { searchAddress } from "api/search";
+import useGeoForm from "hooks/useGeoForm";
 import { SearchForm } from "models/Search";
 import { Field, Label, SwitchWrapper } from "./form";
-import useGeoForm from "./useGeoForm";
 
 interface IGeoForm {
   form: SearchForm;
@@ -13,7 +13,7 @@ interface IGeoForm {
 
 export default function GeoForm({ onUpdateForm, form }: IGeoForm) {
   const [address, setAddress] = useState("");
-  const [debouncedAddress] = useDebounce(address, 800);
+  const [debouncedAddress] = useDebounce(address, 500);
   const { addresses, loading } = searchAddress(debouncedAddress);
   const { geoFeedback, onClickGeolocate } = useGeoForm(onUpdateForm);
 
@@ -22,6 +22,8 @@ export default function GeoForm({ onUpdateForm, form }: IGeoForm) {
       <Field>
         <Autocomplete
           loading={loading}
+          loadingText="chargement..."
+          noOptionsText="pas de résultats"
           id="adresse"
           autoComplete
           options={addresses.filter(({ label }) => label)}

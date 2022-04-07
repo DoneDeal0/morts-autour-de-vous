@@ -60,6 +60,7 @@ module.exports = (env) => {
         assets: path.resolve(__dirname, "src/assets/"),
         components: path.resolve(__dirname, "src/components/"),
         containers: path.resolve(__dirname, "src/containers/"),
+        hooks: path.resolve(__dirname, "src/hooks/"),
         models: path.resolve(__dirname, "src/models/"),
         pages: path.resolve(__dirname, "src/pages/"),
         src: path.resolve(__dirname, "src/"),

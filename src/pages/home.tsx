@@ -4,7 +4,7 @@ import DataContainer from "containers/data";
 import Filterbar from "containers/filterbar";
 import Footer from "containers/footer";
 import Map from "containers/map";
-import useSearchForm from "./useSearchForm";
+import useSearchForm from "hooks/useSearchForm";
 
 export default function Home() {
   const { onClickPage, onClickSearch, allowSearch, form } = useSearchForm();
