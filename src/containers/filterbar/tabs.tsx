@@ -14,7 +14,7 @@ export default function FormTabs({ value, onClick }: ITabs) {
         { id: "name", label: "Par nom" },
       ]}
       value={value}
-      onClick={(tab) => onClick("tab", tab)}
+      onClick={(tab) => onClick("tab", tab as ITab)}
     />
   );
 }

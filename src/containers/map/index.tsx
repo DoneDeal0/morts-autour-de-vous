@@ -1,10 +1,9 @@
 import React, { useRef, useEffect, useMemo } from "react";
-import { Icon, Marker, Circle, LatLngBounds } from "leaflet";
+import { Icon, Marker, LatLngBounds } from "leaflet";
 import "leaflet.markercluster";
 import "leaflet/dist/leaflet.css";
 import "./style.css";
 import { Coordinates, Points } from "models/Map";
-import { Color } from "components/theme";
 import useMap from "./useMap";
 
 declare global {

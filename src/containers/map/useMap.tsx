@@ -24,19 +24,21 @@ export default function useMap(
         fillOpacity: 0.1,
         radius: 5000, // in meters
       }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
   useLayoutEffect(() => {
     if (map) {
       if (showCircle) {
+        map.removeLayer(circleArea);
         circleArea.setLatLng(coordinates);
-        circleArea.addTo(map);
+        map.addLayer(circleArea);
       } else {
-        circleArea.remove();
+        map.removeLayer(circleArea);
       }
     }
-  }, [map, showCircle]);
+  }, [map, showCircle, circleArea, coordinates]);
 
   useEffect(() => {
     if (mapRef.current !== null && map === null) {
