@@ -16,6 +16,7 @@ type MapProps = {
   coordinates: Coordinates;
   points: Points;
   showCircle: boolean;
+  searchRadius: number;
 };
 
 const PIN =
@@ -28,9 +29,14 @@ const defaultCustomIcon = new Icon({
   popupAnchor: [0, -30],
 });
 
-export default function Map({ coordinates, points, showCircle }: MapProps) {
+export default function Map({
+  coordinates,
+  points,
+  showCircle,
+  searchRadius,
+}: MapProps) {
   const mapRef = useRef(null);
-  const map = useMap(mapRef, coordinates, showCircle);
+  const map = useMap(mapRef, coordinates, showCircle, searchRadius);
 
   const markersCluster = useMemo(
     () =>

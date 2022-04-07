@@ -46,6 +46,7 @@ export default function Home() {
             points={people}
             coordinates={form.coordinates}
             showCircle={form.tab === "geo" && people.length > 0}
+            searchRadius={form.distance}
           />
         </DataContainer>
       </div>

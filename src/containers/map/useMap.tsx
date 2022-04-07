@@ -12,7 +12,8 @@ import Color from "components/theme/colors";
 export default function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
   coordinates: Coordinates,
-  showCircle: boolean
+  showCircle: boolean,
+  searchRadius: number
 ): Map | null {
   const [map, setMap] = useState<Map | null>(null);
 
@@ -22,7 +23,7 @@ export default function useMap(
         color: Color.blue,
         fillColor: Color.blue_half,
         fillOpacity: 0.1,
-        radius: 5000, // in meters
+        radius: searchRadius * 1000, // in meters
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -33,12 +34,13 @@ export default function useMap(
       if (showCircle) {
         map.removeLayer(circleArea);
         circleArea.setLatLng(coordinates);
+        circleArea.setRadius(searchRadius * 1000);
         map.addLayer(circleArea);
       } else {
         map.removeLayer(circleArea);
       }
     }
-  }, [map, showCircle, circleArea, coordinates]);
+  }, [map, showCircle, circleArea, coordinates, searchRadius]);
 
   useEffect(() => {
     if (mapRef.current !== null && map === null) {
