@@ -1,10 +1,10 @@
-# RECHERCHE DE PERSONNES DÉCÉDÉES
+# SEARCH APP FOR DECEASED PERSONS
 
-Application de recherche de personnes décédées en France depuis 1970. Cet annuaire est basé sur
-les données officielles du gouvernement Français et le projet open-source MatchID. Les résultats
-renvoyés par ce site n'ont aucune valeur officielle et n'ont qu'une valeur informative.
+This app allows you to search for people who died in France since 1970. This directory is based on
+official French government data and MatchID open-source project. The results
+returned by the app have no official value and are for information purposes only.
 
-<a href="https://recherche-personnes-decedees.netlify.app" target="_blank">ouvrir</a>
+<a href="https://recherche-personnes-decedees.netlify.app" target="_blank">open</a>
 
 <br>
 
