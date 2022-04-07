@@ -22,7 +22,7 @@ const Root = styled.footer`
 const Text = styled.p<{ showPagination: boolean }>`
   padding: 12px;
   font-size: 10px;
-  max-width: 800px;
+  max-width: 550px;
   text-align: center;
   font-family: ${Font.sansSerif};
   line-height: 16px;
@@ -34,9 +34,8 @@ export default function Footer({ onClickPage, page, pages }: IFooter) {
   return (
     <Root>
       <Text showPagination={showPagination}>
-        <strong>morts-autour-de-vous.fr</strong> est un annuaire de personnes
-        décédées en France depuis 1970. Il est basé sur les données officielles
-        du gouvernement Français et le projet open-source{" "}
+        Annuaire de personnes décédées en France depuis 1970, basé sur les
+        données officielles du gouvernement Français et le projet open-source{" "}
         <a
           style={{ color: Color.white }}
           href="https://matchid.io/"
@@ -45,16 +44,7 @@ export default function Footer({ onClickPage, page, pages }: IFooter) {
         >
           MatchID
         </a>
-        . Les résultats renvoyés par ce site n'ont aucune valeur officielle et
-        n'ont qu'une valeur informative. Crée par{" "}
-        <a
-          style={{ color: Color.white }}
-          href="https://www.github.com/donedeal0"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          DoneDeal0
-        </a>
+        . Les résultats renvoyés par ce site n'ont aucune valeur officielle.
       </Text>
       {showPagination && (
         <Pagination

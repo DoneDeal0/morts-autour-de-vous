@@ -34,7 +34,7 @@ const RootMobile = styled.div`
   right: 0;
   left: 0;
   z-index: 9999;
-  @media (min-width: ${Breakpoint.tabletMax}) {
+  @media (min-width: ${Breakpoint.desktop}) {
     display: none;
   }
 `;
